@@ -2,6 +2,9 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import { fetchImages } from "./js/pixabay-api.js";
 import { renderImages } from "./js/render-functions.js";
+import './css/reset.css';
+import './css/styles.css';
+
 
 
 const galleryList = document.querySelector(".gallery");
@@ -39,7 +42,7 @@ page = 1
   query = event.target.elements.search.value.trim();
 
   showLoader();
-  
+
   if (query === "") {
       iziToast.warning({
           color: 'yellow',
@@ -72,7 +75,7 @@ page = 1
   }
   infoBtnLoadMore();
   hideLoader();
-  event.target.reset(); 
+  event.target.reset();
         }
 
 //*=========================================================================================================//
@@ -146,7 +149,7 @@ async function clickRequest() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const backToTop = document.getElementById("back-to-top");
- 
+
   // Показати/скрити кнопку при прокрутці сторінки
 
   window.addEventListener("scroll", function () {
@@ -158,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // Плавна прокрутка при кліку на кнопку 
+  // Плавна прокрутка при кліку на кнопку
 
   backToTop.addEventListener("click", function (event) {
     event.preventDefault();
