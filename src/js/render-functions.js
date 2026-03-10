@@ -1,15 +1,24 @@
-import SimpleLightbox from "simplelightbox"
-import "simplelightbox/dist/simple-lightbox.min.css";
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const galleryList = document.querySelector(".gallery");
+const galleryList = document.querySelector('.gallery');
 
 const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',});
+  captionsData: 'alt',
+});
 
 export async function renderImages(data) {
-
-    const galleryMarkup = data.map(({largeImageURL,webformatURL,tags,likes,views,comments,downloads}) => {
-      
+  const galleryMarkup = data
+    .map(
+      ({
+        largeImageURL,
+        webformatURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
         return `<li class="photos-list-item">
         <a class="photos-list-link" href="${largeImageURL}">
         <img class="photo" src="${webformatURL}" alt="${tags}"/>
@@ -20,9 +29,12 @@ export async function renderImages(data) {
         <li class="item-photo-information-container"><p><span class="accent">Comments</span></br>${comments}</p></li>
         <li class="item-photo-information-container"><p><span class="accent">Downloads</span></br>${downloads}</p></li>
         </ul>
-        </li>`}).join("");
-    
-    galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
-    
-    lightbox.refresh();
-  }
+        </li>`;
+      }
+    )
+    .join('');
+
+  galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
+
+  lightbox.refresh();
+}
